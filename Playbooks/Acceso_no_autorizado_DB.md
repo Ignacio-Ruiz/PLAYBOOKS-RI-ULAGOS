@@ -17,6 +17,33 @@ Este incidente corresponde a un acceso no autorizado a una o más bases de datos
 | Seguridad de la Información | Evalúa impacto, establece nivel de exposición y plan de mitigación           |
 | Área Jurídica y Comunicaciones | Apoya con comunicación interna y acciones legales                      |
 
+## 🛠️ Herramientas y Recursos (Controles NIST/CIS)
+
+**NIST SP 800-53 Rev. 5:**
+- `AC-3`: Aplicación de controles de acceso
+- `AC-6`: Principio de privilegio mínimo
+- `AU-12`: Generación de registros de auditoría
+- `SI-4`: Monitoreo del sistema
+- `SC-28`: Protección de la información en reposo
+- `IA-2`: Identificación y autenticación
+
+**Controles Críticos de Seguridad CIS:**
+- `CIS Control 5`: Configuración segura de hardware/software
+- `CIS Control 6`: Gestión de control de acceso
+- `CIS Control 8`: Gestión de registros de auditoría
+- `CIS Control 16`: Monitoreo y control de cuentas
+- `CIS Control 18`: Seguridad en el software de aplicaciones
+
+**Herramientas Recomendadas:**
+- Monitoreo de actividad en bases de datos: IBM Guardium, Imperva Database Security, Oracle Database Vault
+- Firewalls para bases de datos: GreenSQL, McAfee Database Security
+- Soluciones SIEM: Splunk, QRadar, Elastic Security
+- Escáneres de vulnerabilidades: Nessus, Qualys, SQLMap
+- Herramientas de cifrado: Transparent Data Encryption (TDE), Always Encrypted (SQL Server)
+- Gestión de accesos: CyberArk, Thycotic Secret Server
+- Análisis de logs: ELK Stack, Graylog, Alerta
+- Frameworks ORM: Hibernate, Entity Framework, Django ORM
+
 ## 🧭 Fases de Respuesta
 
 ### 1. Preparación

@@ -24,55 +24,82 @@ Un ataque de inyección SQL se produce cuando un atacante inserta código malici
 
 ---
 
+## 🛠️ Herramientas y Recursos (Controles NIST/CIS)
+
+**NIST SP 800-53 Rev. 5:**
+- `SI-10`: Validación de entradas de información
+- `SI-4`: Monitoreo de sistemas
+- `SC-7`: Protección perimetral (WAF)
+- `RA-5`: Escaneo de vulnerabilidades
+- `SA-11`: Pruebas de seguridad en desarrollo
+
+**Controles Críticos de Seguridad CIS:**
+- `CIS Control 6`: Mantenimiento, monitoreo y análisis de registros de auditoría
+- `CIS Control 16`: Monitoreo y control de cuentas
+- `CIS Control 18`: Seguridad del software de aplicaciones
+- `CIS Control 19`: Respuesta y gestión de incidentes
+- `CIS Control 20`: Pruebas de penetración y ejercicios de Red Team
+
+**Herramientas Recomendadas:**
+- Cortafuegos de aplicaciones web (WAF): ModSecurity, Cloudflare, AWS WAF
+- Herramientas de análisis estático/dinámico (SAST/DAST): OWASP ZAP, Burp Suite, Checkmarx
+- Monitoreo de actividad de bases de datos: IBM Guardium, Imperva Database Security
+- Escáneres de vulnerabilidades: Nessus, Qualys, OpenVAS
+- Frameworks ORM: Hibernate (Java), Entity Framework (.NET), Django ORM (Python)
+- Análisis de logs: ELK Stack, Splunk, Graylog
+- Librerías de codificación segura: OWASP ESAPI, Microsoft AntiXSS
+
+---
+
 🧭 **Fases de Respuesta**
 
 1. **Preparación**
-   - Aplicar validación de entradas y uso de consultas preparadas (prepared statements).
-   - Realizar revisiones periódicas de seguridad en código (SAST/DAST).
-   - Implementar WAF con reglas anti-inyección.
-   - Capacitar a los desarrolladores sobre desarrollo seguro (OWASP Top 10).
+   - Aplicar validación de entradas y uso de consultas preparadas (prepared statements)
+   - Realizar revisiones periódicas de seguridad en código (SAST/DAST)
+   - Implementar WAF con reglas anti-inyección
+   - Capacitar a los desarrolladores sobre desarrollo seguro (OWASP Top 10)
 
 2. **Detección y Análisis**
-   - Identificar errores inusuales en logs de aplicación o base de datos.
-   - Analizar solicitudes HTTP sospechosas con caracteres como ', --, OR 1=1.
-   - Verificar consultas SQL fallidas o ejecutadas fuera de patrón.
-   - Detectar comportamiento anómalo en la base de datos (accesos masivos, exportaciones).
+   - Identificar errores inusuales en logs de aplicación o base de datos
+   - Analizar solicitudes HTTP sospechosas con caracteres como ', --, OR 1=1
+   - Verificar consultas SQL fallidas o ejecutadas fuera de patrón
+   - Detectar comportamiento anómalo en la base de datos (accesos masivos, exportaciones)
 
 3. **Contención**
-   - Bloquear inmediatamente el punto de entrada afectado (formulario o URL).
-   - Aplicar reglas de emergencia en el WAF para filtrar patrones conocidos.
-   - Deshabilitar temporalmente la aplicación si el ataque está activo y crítico.
+   - Bloquear inmediatamente el punto de entrada afectado (formulario o URL)
+   - Aplicar reglas de emergencia en el WAF para filtrar patrones conocidos
+   - Deshabilitar temporalmente la aplicación si el ataque está activo y crítico
 
 4. **Erradicación**
-   - Corregir el código vulnerable (usar ORM o consultas parametrizadas).
-   - Revisar y limpiar accesos no autorizados o modificaciones realizadas.
-   - Actualizar librerías y frameworks desactualizados.
+   - Corregir el código vulnerable (usar ORM o consultas parametrizadas)
+   - Revisar y limpiar accesos no autorizados o modificaciones realizadas
+   - Actualizar librerías y frameworks desactualizados
 
 5. **Recuperación**
-   - Restaurar datos a partir de respaldos si hubo alteraciones.
-   - Validar funcionamiento seguro de la aplicación.
-   - Reintegrar a producción con monitoreo activo.
+   - Restaurar datos a partir de respaldos si hubo alteraciones
+   - Validar funcionamiento seguro de la aplicación
+   - Reintegrar a producción con monitoreo activo
 
 6. **Lecciones Aprendidas**
-   - Documentar el vector de ataque y medidas correctivas aplicadas.
-   - Evaluar la cobertura de pruebas de seguridad en el ciclo de desarrollo.
-   - Agendar una auditoría de seguridad en toda la plataforma afectada.
+   - Documentar el vector de ataque y medidas correctivas aplicadas
+   - Evaluar la cobertura de pruebas de seguridad en el ciclo de desarrollo
+   - Agendar una auditoría de seguridad en toda la plataforma afectada
 
 ---
 
 📦 **Evidencias a Recolectar**
-- Logs de acceso web y SQL (antes y después del incidente).
-- Captura de payload utilizado (si es posible).
-- Código fuente afectado y revisión de commit previo.
-- Listado de tablas y registros modificados o consultados.
+- Logs de acceso web y SQL (antes y después del incidente)
+- Captura de payload utilizado (si es posible)
+- Código fuente afectado y revisión de commit previo
+- Listado de tablas y registros modificados o consultados
 
 ---
 
 📌 **Indicadores de Compromiso (IOC)**
-- Uso anómalo de caracteres como ', ", --, ;, OR, UNION SELECT.
-- Consultas a tablas administrativas (users, admin, information_schema).
-- Cambios en privilegios de usuarios de base de datos.
-- Accesos desde IPs no usuales fuera de horario.
+- Uso anómalo de caracteres como ', ", --, ;, OR, UNION SELECT
+- Consultas a tablas administrativas (users, admin, information_schema)
+- Cambios en privilegios de usuarios de base de datos
+- Accesos desde IPs no usuales fuera de horario
 
 ---
 

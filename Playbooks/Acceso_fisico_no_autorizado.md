@@ -6,7 +6,7 @@
 **Tipo de Activo Afectado**: Infraestructura física (sala de servidores, racks, sistemas de control de acceso)
 
 ## 🧩 Descripción
-El incidente se refiere a la entrada de personas no autorizadas a las salas donde se alojan servidores y equipos críticos, ya sea por falla de seguridad, error humano o intrusión intencional. Este acceso compromete la integridad, disponibilidad o confidencialidad de los activos informáticos institucionales.
+Este incidente se refiere a la entrada de personas no autorizadas a las salas donde se alojan servidores y equipos críticos, ya sea por falla de seguridad, error humano o intrusión intencional. Este acceso compromete la integridad, disponibilidad o confidencialidad de los activos informáticos institucionales.
 
 ## 👥 Roles y Responsabilidades
 | Rol                     | Responsabilidad                                                                 |
@@ -16,6 +16,51 @@ El incidente se refiere a la entrada de personas no autorizadas a las salas dond
 | Dirección de Informática| Evalúa posible impacto en sistemas alojados en la sala                         |
 | Encargado de Infraestructura | Verifica funcionamiento de servidores y otros equipos                   |
 | Área Jurídica / Legal   | Asesora en acciones legales si corresponde                                     |
+
+---
+
+## 🛠️ Herramientas y Recursos (Controles NIST/CIS)
+
+### **Herramientas para la Detección**
+- **Sistemas de Control de Acceso (NIST 800-53: AC-2, AC-3)**
+    - Utilización de tarjetas de acceso, biometría o reconocimiento facial para autenticar a usuarios antes de ingresar a salas de servidores.
+    - **CIS Control 4**: Uso de acceso controlado y monitoreo continuo de entradas/salidas.
+  
+- **Cámaras de Seguridad y Sensores de Movimiento (NIST 800-53: PE-3, PE-6)**
+    - Monitoreo en tiempo real y registro de eventos de acceso físico no autorizado mediante cámaras de seguridad.
+    - **CIS Control 8**: Aseguramiento de que todas las instalaciones físicas críticas estén bajo vigilancia.
+
+- **Software de Monitoreo de Infraestructura Física**
+    - Herramientas que permitan revisar el acceso físico a los servidores y gestionar las bitácoras de acceso. 
+    - **CIS Control 12**: Integración de controles para monitoreo de seguridad física y de los dispositivos.
+  
+### **Recursos Técnicos para Respuesta**
+- **Equipos de Seguridad Física**:
+    - **Control de Cerraduras de Alta Seguridad**: Implementación de cerraduras electrónicas que ofrezcan un mayor control de los accesos.
+    - **Sistemas de Alarmas**: Utilización de sistemas de alarma para detectar accesos no autorizados.
+  
+- **Herramientas de Comunicación de Emergencia (NIST 800-61r3)**:
+    - Establecimiento de un sistema de comunicación de emergencia para todo el equipo de respuesta ante incidentes.
+    - Herramientas de mensajería instantánea o aplicaciones de comunicación interna como **Slack** o **Microsoft Teams** para coordinar las acciones de contención y mitigación de daños.
+
+-   **Herramientas de Autenticación de Acceso (NIST 800-63)**:
+    - Sistemas que utilicen autenticación multifactor (MFA) para reforzar el control sobre los accesos físicos y reducir el riesgo de accesos no autorizados.
+
+
+### **Recomendaciones para Implementar las Herramientas**
+- Realizar una **evaluación continua de las herramientas de seguridad física**, incluyendo cámaras y sistemas de control de acceso, para verificar su eficacia en la prevención de accesos no autorizados.
+  
+- **Automatizar las alertas** en los sistemas de monitoreo para que se actúe de forma inmediata en caso de detección de accesos no autorizados.
+
+- **Realizar simulacros** periódicos para asegurarse de que todos los roles y responsabilidades, definidos en el playbook, estén bien coordinados y ejecutados en caso de un incidente real.
+ 
+
+### **Recursos Adicionales**
+- **CIS Control 4**: Implementación de controles de acceso físico que prevengan el ingreso no autorizado a instalaciones.
+  
+- **NIST 800-53**: Incorporación de controles físicos en el entorno de TI para proteger las instalaciones, el equipo y la información.
+
+---
 
 ## 🧭 Fases de Respuesta
 
@@ -48,6 +93,8 @@ El incidente se refiere a la entrada de personas no autorizadas a las salas dond
 - Evaluar fallas humanas, tecnológicas o procedimentales
 - Reentrenar al personal de seguridad si corresponde
 - Establecer sanciones o acciones legales si hubo dolo
+
+---
 
 ## 📦 Evidencias a Recolectar
 - Registro de accesos físicos (bitácora, software de control)
