@@ -1,6 +1,25 @@
 # Playbook de Respuesta a Incidente: R-02 - Acceso no autorizado a plataformas universitarias
 
+### 🔍 Fuente de Información y Marco Normativo  
+Este playbook se elabora conforme a:  
+1. **Taxonomía de Incidentes de la Agencia Nacional de Ciberseguridad (ANCI)**:  
+   - Clasificación por efectos observables (Resolución Exenta N°1.234/2024)  
+2. **Ley Marco de Ciberseguridad (21.663)**:  
+   - Art. 8° (Deberes específicos de los operadores de importancia vital.)  
+   - Art. 9° (Plazos de reporte al CSIRT Nacional)  
+3. **Protocolos Internos de la Universidad de Los Lagos**:  
+   - Roles del CSIRT Universitario
+   - Matriz de Clasificación de Activos Críticos  
+4. **Estándares Internacionales**:  
+   - NIST SP 800-61 (Respuesta a Incidentes)  
+   - CIS Critical Security Controls v8.1.2
+   - NIST SP 800-53 Rev. 5
+
 ## 🛑 Clasificación del Incidente
+---
+> [!Importante:]
+> "Clasificar siempre por efectos observables, no por causas u orígenes. Registrar todo contexto verificable."
+---
 **Categoría ANCI**: Intrusión (Acceso no autorizado)  
 **Nivel de Criticidad**: Alta  
 **Tipo de Activo Afectado**: Plataformas institucionales (Intranet, Sistemas Académicos, Correo Electrónico, etc.)
@@ -93,8 +112,8 @@ Este incidente ocurre cuando un tercero no autorizado accede a plataformas insti
 - Nuevas reglas de firewall o configuraciones no autorizadas
 
 ## 📅 Tiempo Estimado de Contención y Recuperación
-**Contención**: ≤ 3 horas  
-**Recuperación**: 12–24 horas (dependiendo del alcance y daño)
+- **Contención**: ≤ 3 horas  
+- **Recuperación**: 12–24 horas (dependiendo del alcance y daño)
 
 ## ✅ Checklist de Validación Final
 - [ ] Cuentas comprometidas bloqueadas y credenciales actualizadas
@@ -102,3 +121,13 @@ Este incidente ocurre cuando un tercero no autorizado accede a plataformas insti
 - [ ] Servicios restaurados y verificados
 - [ ] Informe de incidente generado y entregado
 - [ ] Comunicación oficial enviada a usuarios involucrados
+
+## Reporte ANCI
+Plataforma: [https://portal.anci.gob.cl]
+
+**Campos requeridos:**
+- [ ] Código categoría principal + subcategoría
+- [ ] Hora detección primer efecto
+- [ ] Sistemas/servicios afectados
+- [ ] Evidencia técnica (logs, capturas)
+- [ ] Nivel de criticidad (Alto/Medio/Bajo)

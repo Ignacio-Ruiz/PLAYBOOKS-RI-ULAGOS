@@ -1,64 +1,72 @@
 # Playbook de Respuesta a Incidente: R-06 - Acceso físico no autorizado a salas de servidores
 
+### 🔍 Fuente de Información y Marco Normativo  
+Este playbook se elabora conforme a:  
+1. **Taxonomía de Incidentes de la Agencia Nacional de Ciberseguridad (ANCI)**:  
+   - Clasificación por efectos observables (Resolución Exenta N°1.234/2024)  
+2. **Ley Marco de Ciberseguridad (21.663)**:  
+   - Art. 8° (Deberes específicos de los operadores de importancia vital.)  
+   - Art. 9° (Plazos de reporte al CSIRT Nacional)  
+3. **Protocolos Internos de la Universidad de Los Lagos**:  
+   - Roles del CSIRT Universitario
+   - Matriz de Clasificación de Activos Críticos  
+4. **Estándares Internacionales**:  
+   - NIST SP 800-61 (Respuesta a Incidentes)  
+   - CIS Critical Security Controls v8.1.2
+   - NIST SP 800-53 Rev. 5
+
 ## 🛑 Clasificación del Incidente
-**Categoría ANCI**: Intrusión-Acceso no autorizado (Físico)  
-**Nivel de Criticidad**: Alta  
-**Tipo de Activo Afectado**: Infraestructura física (sala de servidores, racks, sistemas de control de acceso)
+---
+> [!Importante:]
+> "Clasificar siempre por efectos observables, no por causas u orígenes. Registrar todo contexto verificable."
+---
+*Área de impacto*: Intrusión-Acceso no autorizado (Físico)  
+*Impacto Operativo*: Alta  
+*Tipo de Activo Afectado*: Infraestructura física (sala de servidores, racks, sistemas de control de acceso)
 
 ## 🧩 Descripción
-Este incidente se refiere a la entrada de personas no autorizadas a las salas donde se alojan servidores y equipos críticos, ya sea por falla de seguridad, error humano o intrusión intencional. Este acceso compromete la integridad, disponibilidad o confidencialidad de los activos informáticos institucionales.
+El incidente se refiere a la entrada de personas no autorizadas a las salas donde se alojan servidores y equipos críticos, ya sea por falla de seguridad, error humano o intrusión intencional. Este acceso compromete la integridad, disponibilidad o confidencialidad de los activos informáticos institucionales.
 
-## 👥 Roles y Responsabilidades
-| Rol                     | Responsabilidad                                                                 |
-|-------------------------|---------------------------------------------------------------------------------|
-| CSIRT Universitario     | Coordina análisis de impacto e investigación técnica                           |
-| Seguridad Física        | Investiga el acceso, revisa grabaciones, refuerza vigilancia                   |
-| Dirección de Informática| Evalúa posible impacto en sistemas alojados en la sala                         |
-| Encargado de Infraestructura | Verifica funcionamiento de servidores y otros equipos                   |
-| Área Jurídica / Legal   | Asesora en acciones legales si corresponde                                     |
+---
+
+### 👥 Roles y Responsabilidades  
+| Rol                          | Responsabilidad                                                                       |
+|------------------------------|---------------------------------------------------------------------------------------|
+| Seguridad Física             | Verificar registros acceso, revisar dispositvos de videovigilancia, asegurar perímetro|
+| CSIRT Universitario          | Evaluar impacto técnico, revisar logs de consolas                                     |
+| Delegado Ciberseguridad      | Reportar al CSIRT Nacional (<3h Art. 9°)                                              |
+| Encargado Infraestructura    | Inspeccionar equipos por manipulación física                                          |
+| Asesor Legal                 | Gestionar denuncia policial si hay intrusión                                          |
 
 ---
 
 ## 🛠️ Herramientas y Recursos (Controles NIST/CIS)
 
-### **Herramientas para la Detección**
-- **Sistemas de Control de Acceso (NIST 800-53: AC-2, AC-3)**
-    - Utilización de tarjetas de acceso, biometría o reconocimiento facial para autenticar a usuarios antes de ingresar a salas de servidores.
-    - **CIS Control 4**: Uso de acceso controlado y monitoreo continuo de entradas/salidas.
-  
-- **Cámaras de Seguridad y Sensores de Movimiento (NIST 800-53: PE-3, PE-6)**
-    - Monitoreo en tiempo real y registro de eventos de acceso físico no autorizado mediante cámaras de seguridad.
-    - **CIS Control 8**: Aseguramiento de que todas las instalaciones físicas críticas estén bajo vigilancia.
+**NIST SP 800-53 Rev. 5:**
+- `PE-2`: Autorizaciones de Acceso Físico
+- `PE-3`: Control de acceso físico
+- `PE-6`: Monitoreo del acceso físico
+- `PE-8`: Registros de acceso de visitantes
+- `PE-12`: Iluminación de emergencia
+- `PE-14`: Controles ambientales
 
-- **Software de Monitoreo de Infraestructura Física**
-    - Herramientas que permitan revisar el acceso físico a los servidores y gestionar las bitácoras de acceso. 
-    - **CIS Control 12**: Integración de controles para monitoreo de seguridad física y de los dispositivos.
-  
-### **Recursos Técnicos para Respuesta**
-- **Equipos de Seguridad Física**:
-    - **Control de Cerraduras de Alta Seguridad**: Implementación de cerraduras electrónicas que ofrezcan un mayor control de los accesos.
-    - **Sistemas de Alarmas**: Utilización de sistemas de alarma para detectar accesos no autorizados.
-  
-- **Herramientas de Comunicación de Emergencia (NIST 800-61r3)**:
-    - Establecimiento de un sistema de comunicación de emergencia para todo el equipo de respuesta ante incidentes.
-    - Herramientas de mensajería instantánea o aplicaciones de comunicación interna como **Slack** o **Microsoft Teams** para coordinar las acciones de contención y mitigación de daños.
+**Controles Críticos de Seguridad CIS:**
+- `CIS Control 1`: El Control 1 es la base para saber qué activos (servidores) necesitan ser protegidos físicamente.  
+- `CIS Control 3`: Seguridad física para oficinas, áreas de trabajo y áreas seguras
+- `CIS Control 5`: Monitoreo y control de cuentas (para sistemas de control de acceso)
+- `CIS Control 8`: Los "registros de control de acceso (por ejemplo, cerraduras electrónicas, sistema de alarma)" (access control logs (e.g., electronic locks, alarm system)). Esto significa que cualquier sistema de control de acceso físico implementado para proteger las salas de servidores (como cerraduras electrónicas) debe generar registros que deben ser recopilados, revisados y retenidos según lo especificado en este control.
+- `CIS Control 14`: Conciencia de Seguridad y Capacitación de Habilidades 
+- `CIS Control 18`: Pruebas de Penetración
 
--   **Herramientas de Autenticación de Acceso (NIST 800-63)**:
-    - Sistemas que utilicen autenticación multifactor (MFA) para reforzar el control sobre los accesos físicos y reducir el riesgo de accesos no autorizados.
-
-
-### **Recomendaciones para Implementar las Herramientas**
-- Realizar una **evaluación continua de las herramientas de seguridad física**, incluyendo cámaras y sistemas de control de acceso, para verificar su eficacia en la prevención de accesos no autorizados.
-  
-- **Automatizar las alertas** en los sistemas de monitoreo para que se actúe de forma inmediata en caso de detección de accesos no autorizados.
-
-- **Realizar simulacros** periódicos para asegurarse de que todos los roles y responsabilidades, definidos en el playbook, estén bien coordinados y ejecutados en caso de un incidente real.
- 
-
-### **Recursos Adicionales**
-- **CIS Control 4**: Implementación de controles de acceso físico que prevengan el ingreso no autorizado a instalaciones.
-  
-- **NIST 800-53**: Incorporación de controles físicos en el entorno de TI para proteger las instalaciones, el equipo y la información.
+**Herramientas Recomendadas:**
+- Sistemas de Control de Acceso Físico (PACS): LenelS2, Honeywell WIN-PAK, Genetec
+- Videovigilancia: cámaras Axis, Milestone XProtect, grabadores Hikvision NVR
+- Sistemas de Detección de Intrusos: Bosch, DSC, Paradox
+- Gestión de Registros de Acceso: CCURE 9000, Gallagher Command Centre
+- Monitoreo Ambiental: APC NetBotz, Schneider EcoStruxure
+- Sistemas Biométricos: Suprema BioStar, HID Signo
+- Seguimiento de Activos: RF Code, Ekahau RTLS
+- Sistemas de Gestión de Visitantes: Envoy, Proxyclick
 
 ---
 
@@ -96,25 +104,47 @@ Este incidente se refiere a la entrada de personas no autorizadas a las salas do
 
 ---
 
-## 📦 Evidencias a Recolectar
+## 📦 Registros y Evidencias
 - Registro de accesos físicos (bitácora, software de control)
 - Imágenes de cámaras de seguridad
 - Estado físico de la infraestructura (puertas, cerraduras, equipos)
 - Declaraciones del personal presente o testigos
 
+---
+
 ## 📌 Indicadores de Compromiso (IOC)
-- Accesos fuera de horario o por usuarios no autorizados
-- Manipulación de cables, conectores o sensores
-- Corte de energía no programado
-- Fallas simultáneas en varios equipos del rack
+- Intentos de acceso fuera de horario laboral  
+- Credenciales RFID clonadas (mismo ID en múltiples ubicaciones)  
+- Eventos "Puerta forzada" en sistema de alarmas  
+- Conexiones SSH/consola desde IPs no autorizadas post-acceso  
+- Dispositivos USB desconocidos conectados a servidores  
+
+---
 
 ## 📅 Tiempo Estimado de Contención y Recuperación
+- Se necesita definir estimaciones para la universidad, podrian basarse en escenarios hipotéticos de respuesta rápida:
+- Detección y contención: 30–60 min para acceso físico no autorizado.
+- Recuperación completa: 4–24 h, según el nivel de revisión forense y restauración del ambiente.
 **Contención**: ≤ 2 horas  
 **Recuperación**: 12–24 horas (según el nivel de revisión requerido)
 
+---
+
 ## ✅ Checklist de Validación Final
-- [ ] Acceso restringido temporalmente
-- [ ] Verificación de integridad de los equipos
-- [ ] Registro del incidente físico generado
-- [ ] Medidas correctivas aplicadas
-- [ ] Reporte final validado por TI y Seguridad
+- [ ] Verificar integridad de sellos de seguridad en equipos  
+- [ ] Revisar logs de acceso físico últimos 7 días  
+- [ ] Analizar grabaciones CCTV período sospechoso  
+- [ ] Rotar credenciales RFID/BIOMÉTRICAS  
+- [ ] Escanear puertos consola (iDRAC/iLO) por accesos no autorizados  
+- [ ] Validar estado de sensores de movimiento/intrusión  
+- [ ] Actualizar políticas de acceso en sistema central 
+
+## Reporte ANCI
+Plataforma: [https://portal.anci.gob.cl]
+
+**Campos requeridos:**
+- [ ] Código categoría principal + subcategoría
+- [ ] Hora detección primer efecto
+- [ ] Sistemas/servicios afectados
+- [ ] Evidencia técnica (logs, capturas)
+- [ ] Nivel de criticidad (Alto/Medio/Bajo)
