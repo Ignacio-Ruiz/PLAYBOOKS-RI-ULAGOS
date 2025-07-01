@@ -50,3 +50,29 @@ El propósito principal de esta resolución es aprobar la **taxonomía de incide
 ---
 
 La resolución fue firmada por **Daniel Álvarez Valenzuela**, Director Nacional de la Agencia Nacional de Ciberseguridad.
+
+🛡️ Estructura base para playbooks:
+Nombre del incidente
+Fuente de Información y Marco Normativo  
+Clasificación del Incidente según ANCI
+Área de impacto
+Impacto Operativo
+Tipo de Activo Afectado
+Descripción
+Roles y Responsabilidades
+Herramientas y recursos recomendados (NIST/CIS Controls)
+Controles NIST SP 800-53 Rev. 5
+CIS Critical Security Controls:
+Herramientas Recomendadas:
+Fases de respuesta
+Preparación
+Detección y Análisis
+Contención
+Erradicación
+Recuperación
+Lecciones Aprendidas
+Registros y Evidencias
+Indicadores de Compromiso (IOC)
+Tiempo Estimado de Contención y Recuperación según casos reales
+Checklist de Validación Final
+Reporte ANCI (Plataforma) 
