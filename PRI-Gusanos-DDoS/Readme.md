@@ -1,10 +1,17 @@
 # 🛡️ Playbook 02: Gusanos / DDoS
+
+**Código:** PB-ULA-002  
+**Última actualización:** 13/Jul/2025
+**Responsable de revisión:** 
 **Tipo de Incidente:** Disponibilidad-Afectación Servicios web, servidores institucionales y red perimetral
 **Versión:** 1.0
+
 
 ---
 
 ## 1️⃣ Preparación
+![Preparación](./Workflows/01-preparacion.png)
+
 
 **Objetivo:** Establecer contactos, definir procedimientos y recolectar información para ahorrar tiempo durante un ataque.
 
@@ -23,6 +30,7 @@
 ---
 
 ## 2️⃣ Detección
+![Detección y análisis](./Workflows/02-deteccion-analisis.png)
 
 **Objetivo:** Detectar la infección y delimitar su alcance.
 
@@ -51,6 +59,7 @@ Si se observan uno o más de estos síntomas, deberán contactarse con los actor
 ---
 
 ## 3️⃣ Contención
+![Contención](./Workflows/03-contencion.png)
 
 **Objetivo:** Mitigar los efectos del ataque.
 
@@ -73,6 +82,7 @@ Si se observan uno o más de estos síntomas, deberán contactarse con los actor
 ---
 
 ## 4️⃣ Erradicación
+![Erradicación](./Workflows/04-erradicacion.png)
 
 **Objetivo:** Eliminar la amenaza sin afectar servicios.
 
@@ -99,6 +109,7 @@ el progreso de erradicación debe ser monitoreado por el personal encargado.
 ---
 
 ## 5️⃣ Recuperación
+![Recuperación](./Workflows/05-recuperacion.png)
 
 **Objetivo:** Verificar restauración del funcionamiento.
 
@@ -116,6 +127,7 @@ Todos estos pasos deben de realizarse en una manera “paso a paso” y se debe 
 ---
 
 ## 6️⃣ Lecciones aprendidas
+![Lecciones Aprendidas](./Workflows/06-lecciones-aprendidas.png)
 
 **Objetivo:** Documentar el incidente y mejorar procesos.
 
@@ -143,3 +155,5 @@ Deberán de definirse las acciones para mejorar los procesos de manejo de infecc
 - **Fuente:** CERT SG 
 - **Web:** [cert.societegenerale.com](http://cert.societegenerale.com)  
 - **Email:** cert.sg@socgen.com  
+
+
