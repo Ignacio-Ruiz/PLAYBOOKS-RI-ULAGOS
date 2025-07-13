@@ -1,10 +1,15 @@
 # 🛡️ Playbook 02: Gusanos / DDoS
 
-**Código:** PB-ULA-002  
+**Código:** PB-ULA-002
+
 **Última actualización:** 13/Jul/2025
+
 **Responsable de revisión:** 
+
 **Tipo de Incidente:** Disponibilidad-Afectación Servicios web, servidores institucionales y red perimetral
+
 **Versión:** 1.0
+
 
 
 ---
