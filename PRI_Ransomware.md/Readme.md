@@ -1,103 +1,148 @@
-# 📘 Playbook 04: Ransomware
-**Tipo de Incidente:** Infección por Ransomware  
-**Versión:** 1.0  
+# 🛡️ Playbook 04: Ransomware
 
+**Código:** PB-ULA-004  
+
+**Última actualización:** 02/Agosto/2025 
+
+**Responsable de revisión:** [Nombre o cargo]  
+
+**Tipo de Incidente:** Confidencialidad / Disponibilidad – Infección por Ransomware  
+
+**Versión:** 1.0
 
 ---
 
 ## 1️⃣ Preparación
+![Preparación](./Workflows/01-preparacion.png)
 
-**🎯 Objetivo:** Alistarse para manejar el incidente
+**Objetivo:** Establecer los mecanismos preventivos, recursos y responsabilidades necesarias para responder efectivamente a un ataque de ransomware.
 
-- Tener buen conocimiento de políticas de seguridad y perfiles de usuario.
-- Mantener actualizados productos de seguridad (correo, gateways, proxy, etc.).
-- Aumentar la formación de usuarios finales y soporte TI sobre amenazas de ransomware.
-- Asegurar copias de seguridad recientes, confiables y externas (local y red).
+### Acciones:
+
+- **Respaldos:**
+  - Verificar que se mantengan respaldos actualizados, cifrados y fuera de línea.
+  - Realizar pruebas periódicas de recuperación.
+- **Inventario de activos:**
+  - Mantener un inventario actualizado de servidores, endpoints y servicios críticos.
+- **Gestión de acceso:**
+  - Implementar MFA y principios de mínimo privilegio.
+  - Auditar usuarios privilegiados regularmente.
+- **Concientización:**
+  - Capacitar a usuarios en identificación de correos maliciosos y prácticas seguras.
+- **Defensas técnicas:**
+  - Configurar antivirus/EDR con alertas activas.
+  - Activar control de ejecución de scripts y macros.
+- **Contactos clave:**
+  - Definir responsables de TI, comunicaciones, legales, CSIRT y relaciones externas.
 
 ---
 
 ## 2️⃣ Detección
+![Detección y análisis](./Workflows/02-deteccion-analisis.png)
 
-**🎯 Objetivo:** Detectar el incidente
+**Objetivo:** Detectar rápidamente un ataque de ransomware y evaluar su alcance.
 
-### 🧩 Principales indicios de ransomware:
-- Correos electrónicos con archivos adjuntos sospechosos.
-- Presencia de “nota de secuestro” en el escritorio.
-- Quejas de usuarios sobre archivos inaccesibles o cifrados.
-- Archivos con extensiones inusuales (.abx, .xyz, .aaa).
-- Cambios masivos en archivos en carpetas compartidas.
+### Indicadores de compromiso (IoC):
 
-### 🔎 Identificación basada en el host:
-- Ejecutables sospechosos en `%ALLUSERSPROFILE%`, `%APPDATA%`, `%SystemDrive%`.
-- Notas de rescate.
-- Imagen de memoria (si es posible).
-- Procesos y adjuntos inusuales.
-- Conexiones a Tor, I2P o sitios de pago en Bitcoin.
+- Múltiples archivos cifrados o renombrados.
+- Notas de rescate visibles en carpetas compartidas.
+- Cargas inusuales en CPU/disco en servidores.
+- Comunicación de red con direcciones IP desconocidas o en TOR.
+- Archivos con extensiones inusuales (.locked, .encrypt, etc.).
 
-### 🌐 Identificación basada en la red:
-- Patrones de conexión con Kits Exploit o C&C del ransomware.
-- Navegación inusual (Tor2web, I2P).
-- Archivos adjuntos maliciosos en correos.
+### Acciones:
+
+- Verificar logs del EDR y del sistema operativo.
+- Consultar usuarios si detectan archivos cifrados.
+- Revisar correos reportados como sospechosos.
+- Activar el procedimiento de emergencia si se confirma el incidente.
+- Contactar al CSIRT Nacional (ANCI) si el impacto es crítico.
 
 ---
 
 ## 3️⃣ Contención
+![Contención](./Workflows/03-contencion.png)
 
-**🎯 Objetivo:** Limitar el impacto del incidente
+**Objetivo:** Limitar la propagación del ransomware para evitar mayores daños.
 
-- Desconectar de la red los equipos comprometidos.
-- Si no es posible, cancelar unidades compartidas (`NET USE X:`).
-- Bloquear tráfico a servidores C&C.
-- Enviar muestras de malware al proveedor de seguridad.
-- Reportar URL o IP sospechosa.
+### Acciones:
+
+1. **Desconexión inmediata:**
+   - Aislar equipos comprometidos de la red (Wi-Fi, LAN).
+   - Apagar servicios afectados si es necesario.
+2. **Bloqueo de credenciales comprometidas:**
+   - Restablecer contraseñas de usuarios afectados.
+   - Suspender cuentas sospechosas.
+3. **Control de tráfico:**
+   - Bloquear IPs relacionadas al C2 en firewalls.
+   - Restringir acceso a unidades compartidas.
+4. **Preservación de evidencia:**
+   - Evitar formateos o borrados hasta que se capture la evidencia.
+   - Tomar imágenes forenses si se cuenta con los medios.
 
 ---
 
 ## 4️⃣ Erradicación
+![Erradicación](./Workflows/04-erradicacion.png)
 
-**🎯 Objetivo:** Remover la amenaza
+**Objetivo:** Eliminar el ransomware de los sistemas comprometidos y cerrar vectores de acceso.
 
-- Eliminar binarios y entradas del registro maliciosas.
-- Rutas comunes: `%ALLUSERSPROFILE%`, `%APPDATA%`, `%SystemDrive%`.
-- Si no es posible, reinstalar el equipo con una imagen limpia.
+### Acciones:
+
+- **Identificar la variante de ransomware:**
+  - Consultar bases de datos (ID Ransomware, NoMoreRansom).
+- **Eliminar el malware:**
+  - Ejecutar análisis con herramientas EDR/AV.
+  - Validar que no queden procesos maliciosos activos.
+- **Parches y actualizaciones:**
+  - Corregir vulnerabilidades que facilitaron el acceso.
+- **Revisión de scripts persistentes:**
+  - Verificar tareas programadas, claves de registro y servicios sospechosos.
+- **Coordinación con autoridades:**
+  - Si es grave, colaborar con CSIRT nacional, PDI u otros organismos.
 
 ---
 
 ## 5️⃣ Recuperación
+![Recuperación](./Workflows/05-recuperacion.png)
 
-**🎯 Objetivo:** Restaurar operaciones normales
+**Objetivo:** Restaurar la operación normal asegurando que el entorno es seguro.
 
-- Actualizar firmas antivirus.
-- Asegurarse de que los binarios maliciosos hayan sido eliminados.
-- Restaurar sistemas con respaldo verificado.
-- Comunicar oficialmente el cierre del incidente.
-- Reforzar copia de seguridad confiable.
+### Acciones:
+
+1. **Restaurar desde respaldos verificados.**
+2. **Validar integridad de sistemas restaurados.**
+3. **Monitorear comportamiento post-recuperación.**
+4. **Realizar escaneo final del entorno.**
+5. **Reincorporar los equipos afectados en fases.**
+6. **Notificar oficialmente el cierre técnico del incidente.**
 
 ---
 
 ## 6️⃣ Lecciones aprendidas
+![Lecciones Aprendidas](./Workflows/06-lecciones-aprendidas.png)
 
-**🎯 Objetivo:** Evaluar lecciones aprendidas y mejorar procesos
+**Objetivo:** Obtener información útil del incidente para prevenir futuros ataques.
 
-### 📄 Informe post-mortem
-Debe incluir:
-- Detección inicial
-- Acciones y plazos
-- Lo que salió bien y mal
-- Costo del incidente
+### Informe:
 
-### 🛠 Retrospectiva 
-- Evaluar métodos de entrada de malware.
-- Revisar y mejorar procedimientos.
-- Considerar test externos de seguridad.
-- Colaborar con CSIRTs y otras organizaciones.
+- Descripción del ataque (variante, medio de infección).
+- Impacto en la operación, número de sistemas afectados.
+- Tiempo de detección y contención.
+- Costos directos e indirectos.
+- Decisiones clave tomadas durante la respuesta.
+
+### Retrospectiva:
+
+- ¿Se cumplieron los tiempos de respuesta?
+- ¿Hubo fallos en la detección o contención?
+- ¿Qué medidas se implementarán para fortalecer la defensa?
+- ¿Se requiere actualizar el plan de respuesta?
 
 ---
 
-## 📝 Información de Fuente
+## 📄 Referencia
 
-- **Autor IRM:** CERT SG / Jean-Philippe Teissier  
-- **Versión:** 1.0  
-- **Web:** [cert.societegenerale.com](http://cert.societegenerale.com)  
-- **Email:** cert.sg@socgen.com  
-- **Traducción:** Francisco Neira  
+- **Fuente base:** Let'sDefend – "Ransomware Playbook"  
+- **URL:** [letsdefend.io](https://letsdefend.io)  
+- **Email de contacto:** cert.sg@socgen.com  
